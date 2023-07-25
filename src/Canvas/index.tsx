@@ -8,7 +8,7 @@ const Canvas: React.FC<CanvasProps> = ({ setOutputImage }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawing, setDrawing] = useState(false);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
-  const timeoutRef = useRef<number | null>(null);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -58,18 +58,18 @@ const Canvas: React.FC<CanvasProps> = ({ setOutputImage }) => {
   const simulateAPICall = useCallback(
     (data: string) => {
       // Simulamos una demora de 1000ms utilizando setTimeout
-      const delay = 4000;
-      setTimeout(() => {
-        // Aquí estaría la llamada real a la API con 'data' como el dibujo del usuario
-        // Por ahora, solo simulamos la respuesta de la API con un tiempo de demora
-        console.log("Simulating API call with data:", data);
-        console.log("Received response from API.");
+      //const delay = 4000;
+      //setTimeout(() => {
+      // Aquí estaría la llamada real a la API con 'data' como el dibujo del usuario
+      // Por ahora, solo simulamos la respuesta de la API con un tiempo de demora
+      console.log("Simulating API call with data:", data);
+      console.log("Received response from API.");
 
-        // Aquí puedes actualizar el estado con la imagen devuelta por la API y mostrarla en la ventana de salida
-        // Por ahora, solo mostramos una imagen aleatoria generada por la API para ilustrar
-        const randomImageURL = `https://random.imagecdn.app/500/500?${Date.now()}`;
-        setOutputImage(randomImageURL);
-      }, delay);
+      // Aquí puedes actualizar el estado con la imagen devuelta por la API y mostrarla en la ventana de salida
+      // Por ahora, solo mostramos una imagen aleatoria generada por la API para ilustrar
+      const randomImageURL = `https://random.imagecdn.app/500/500?${Date.now()}`;
+      setOutputImage(randomImageURL);
+      //}, delay);
     },
     [setOutputImage]
   );
@@ -84,15 +84,15 @@ const Canvas: React.FC<CanvasProps> = ({ setOutputImage }) => {
       const canvasData = canvasRef.current?.toDataURL();
 
       // Cancelamos el temporizador anterior
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
       }
 
-      // Llamamos a la API solo si se dibujó algo después de 4 segundos
+      // Llamamos a la API solo si se dibujó algo después de 3 segundos
       if (canvasData) {
-        timeoutRef.current = window.setTimeout(() => {
+        timerRef.current = window.setTimeout(() => {
           simulateAPICall(canvasData);
-        }, 4000);
+        }, 3000);
       }
     }
   }, [drawing, context, simulateAPICall]);
