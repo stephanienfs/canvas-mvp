@@ -62,7 +62,6 @@ export default function CanvasWidget({ setOutputImage }: CanvasWidgetProps) {
   };
 
   const handleMouseUp = React.useCallback(() => {
-    console.log("On mouse up event");
     if (drawing && context) {
       context.closePath();
       setDrawing(false);
