@@ -8,11 +8,11 @@ export default function DrawingTool() {
   return (
     <Styled.DrawingTool>
       <Styled.CanvasContainer>
-        <h2>You can draw on this Canvas</h2>
+        <h2>Draw here!</h2>
         <CanvasWidget setOutputImage={setOutputImage} />
       </Styled.CanvasContainer>
       <Styled.OutputContainer>
-        <h2>Output</h2>
+        <h2>See the results here</h2>
         {outputImage ? (
           <>
             <img src={outputImage} alt="Output" style={{ maxWidth: "100%" }} />

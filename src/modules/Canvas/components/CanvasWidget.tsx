@@ -85,8 +85,8 @@ export default function CanvasWidget({ setOutputImage }: CanvasWidgetProps) {
     <Styled.Container>
       <canvas
         ref={canvasRef}
-        width={500}
         height={600}
+        width={window.innerWidth * 0.5}
         onMouseDown={startDrawing}
         onMouseUp={handleMouseUp}
         onMouseLeave={stopDrawing}

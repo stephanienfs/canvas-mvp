@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const DrawingTool = styled.div`
   display: flex;
+
+  justify-content: space-between;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0 1rem;
+  margin: 0 1rem;
   h2,
   p {
     text-align: center;
@@ -18,9 +20,10 @@ export const Container = styled.div`
 `;
 
 export const CanvasContainer = styled(Container)`
-  flex: 1;
+  //flex: 1;
 `;
 
 export const OutputContainer = styled(Container)`
-  max-width: 365px;
+  min-width: 25%;
+  max-width: 50%;
 `;
