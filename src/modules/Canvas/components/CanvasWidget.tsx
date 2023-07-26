@@ -76,7 +76,7 @@ export default function CanvasWidget({ setOutputImage }: CanvasWidgetProps) {
       if (canvasData) {
         timerRef.current = window.setTimeout(() => {
           simulateAPICall();
-        }, 3000);
+        }, 2000);
       }
     }
   }, [drawing, context, simulateAPICall]);
