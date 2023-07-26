@@ -1,14 +1,13 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import CanvasMVP from "./Canvas";
+import CanvasMVP from "./modules/Canvas";
+import { Container, Header } from "./App.styles";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <CanvasMVP />
-      </header>
-    </div>
+    <Container className="App">
+      <Header>Draw it!</Header>
+      <CanvasMVP />
+    </Container>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import * as Styled from "./CanvasWidget.styles";
 interface CanvasWidgetProps {
   setOutputImage: React.Dispatch<React.SetStateAction<string | null>>;
 }
@@ -38,6 +39,7 @@ export default function CanvasWidget({ setOutputImage }: CanvasWidgetProps) {
       const { offsetX, offsetY } = event.nativeEvent;
       context.lineTo(offsetX, offsetY);
       context.stroke();
+      context.strokeStyle = "#fff";
     },
     [drawing, context]
   );
@@ -80,18 +82,17 @@ export default function CanvasWidget({ setOutputImage }: CanvasWidgetProps) {
   }, [drawing, context, simulateAPICall]);
 
   return (
-    <div>
+    <Styled.Container>
       <canvas
         ref={canvasRef}
-        width={800}
+        width={500}
         height={600}
         onMouseDown={startDrawing}
         onMouseUp={handleMouseUp}
         onMouseLeave={stopDrawing}
         onMouseMove={handleMouseMove}
-        style={{ border: "1px solid black" }}
       />
-      <button onClick={clearCanvas}>Clean it!</button>
-    </div>
+      <Styled.Button onClick={clearCanvas}>Clean it!</Styled.Button>
+    </Styled.Container>
   );
 }
